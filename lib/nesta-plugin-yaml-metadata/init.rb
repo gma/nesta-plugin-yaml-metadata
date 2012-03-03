@@ -8,7 +8,7 @@ module Nesta
       raise MetadataParseError
     else
       metadata = CaseInsensitiveHash.new
-      yaml.each { |key, value| metadata[key.downcase] = value }
+      yaml.each { |key, value| metadata[key.downcase] = value } if yaml
       metadata
     end
   end

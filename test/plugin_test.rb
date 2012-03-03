@@ -48,4 +48,8 @@ Well hello...
       @page.parse_metadata('foo: ["oops')
     end
   end
+
+  def test_should_return_empty_metadata_hash_when_no_metadata_specified
+    assert_equal({}, @page.parse_metadata('# Page heading'))
+  end
 end
