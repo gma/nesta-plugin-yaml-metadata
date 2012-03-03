@@ -7,6 +7,7 @@ module Nesta
     rescue Psych::SyntaxError
       raise MetadataParseError
     else
+      raise MetadataParseError unless yaml
       metadata = CaseInsensitiveHash.new
       yaml.each { |key, value| metadata[key.downcase] = value } if yaml
       metadata

@@ -43,13 +43,15 @@ Well hello...
     assert_equal ['value 1', 'value 2'], @page.metadata('YAML Key')
   end
 
-  def test_should_raise_correct_exception_on_invalid_yaml
+  def test_should_raise_parse_error_on_invalid_yaml
     assert_raises(Nesta::MetadataParseError) do
       @page.parse_metadata('foo: ["oops')
     end
   end
 
-  def test_should_return_empty_metadata_hash_when_no_metadata_specified
-    assert_equal({}, @page.parse_metadata('# Page heading'))
+  def test_should_raise_parse_error_when_no_metadata_specified
+    assert_raises(Nesta::MetadataParseError) do
+      @page.parse_metadata('# Page heading')
+    end
   end
 end
